@@ -8,6 +8,9 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="users">Bai1</a>
+<a href="users">Bai1</a><br>
+<a href="movies">Bai2</a><br>
+<a href="theaters">Bai3</a><br>
+<a href="screenrooms">Bai4</a><br>
 </body>
 </html>

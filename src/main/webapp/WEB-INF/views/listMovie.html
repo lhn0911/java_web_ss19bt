@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/movies/add">Thêm phim mới</a>
+<table border="1">
+    <tr>
+        <th>Tên</th><th>Đạo diễn</th><th>Năm</th><th>Thể loại</th><th>Trạng thái</th><th>Hành động</th>
+    </tr>
+    <tr th:each="m : ${movies}">
+        <td th:text="${m.title}"></td>
+        <td th:text="${m.director}"></td>
+        <td th:text="${m.releaseYear}"></td>
+        <td th:text="${m.genre}"></td>
+        <td th:text="${m.status} ? 'Đang chiếu' : 'Ngừng chiếu'"></td>
+        <td>
+            <a th:href="@{/movies/edit(id=${m.id})}">Sửa</a>
+            <a th:href="@{/movies/delete(id=${m.id})}" onclick="return confirm('Xác nhận xóa?')">Xóa</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

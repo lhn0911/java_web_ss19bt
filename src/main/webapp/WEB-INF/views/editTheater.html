@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/theaters/edit}" th:object="${theater}" method="post">
+    <label>Tên rạp: <input th:field="*{theaterName}"/></label><br>
+    <label>Địa chỉ: <input th:field="*{address}"/></label><br>
+    <label>Số phòng chiếu: <input type="number" th:field="*{numberScreenRoom}"/></label><br>
+    <button type="submit">Lưu</button>
+</form>
+<div th:if="${#fields.hasErrors('*')}">
+    <p th:each="err : ${#fields.allErrors()}" th:text="${err.defaultMessage}"></p>
+</div>
+<a href="/theaters">Quay lại</a>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/theaters/add">Thêm rạp</a>
+<table border="1">
+    <tr><th>Tên</th><th>Địa chỉ</th><th>Số phòng</th><th>Trạng thái</th><th>Hành động</th></tr>
+    <tr th:each="t : ${theaters}">
+        <td th:text="${t.theaterName}"></td>
+        <td th:text="${t.address}"></td>
+        <td th:text="${t.numberScreenRoom}"></td>
+        <td th:text="${t.status} ? 'Hoạt động' : 'Ngừng hoạt động'"></td>
+        <td>
+            <a th:href="@{'/theaters/edit'(id=${t.id})}">Sửa</a>
+            <a th:href="@{'/theaters/delete'(id=${t.id})}" onclick="return confirm('Xóa?')">Xóa</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

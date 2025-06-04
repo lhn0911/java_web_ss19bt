@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Danh sách người dùng</title>
 </head>
 <body>
 <h2>Danh sách người dùng</h2>
+
 <table border="1">
-  <tr>
-    <th>ID</th><th>Username</th><th>Email</th><th>Phone</th><th>Status</th><th>Action</th>
-  </tr>
-  <tr th:each="user : ${users}">
-    <td th:text="${user.id}"></td>
-    <td th:text="${user.username}"></td>
-    <td th:text="${user.email}"></td>
-    <td th:text="${user.phoneNumber}"></td>
-    <td th:text="${user.isActive} ? 'Active' : 'Blocked'"></td>
-    <td>
-      <form th:action="@{/users/status}" method="post">
-        <input type="hidden" name="userId" th:value="${user.id}" />
-        <input type="hidden" name="isActive" th:value="${!user.isActive}" />
-        <input type="hidden" name="page" th:value="${currentPage}" />
-        <button type="submit" th:text="${user.isActive} ? 'Block' : 'Open'"></button>
-      </form>
-    </td>
-  </tr>
+    <tr>
+        <th>ID</th><th>Username</th><th>Email</th><th>Phone</th><th>Status</th><th>Action</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.phoneNumber}"></td>
+        <td th:text="${user.active} ? 'Active' : 'Blocked'"></td>
+        <td>
+            <form th:action="@{/users/status}" method="post">
+                <input type="hidden" name="userId" th:value="${user.id}" />
+                <input type="hidden" name="isActive" th:value="${!user.active}" />
+                <button type="submit" th:text="${user.active} ? 'Block' : 'Open'"></button>
+            </form>
+        </td>
+    </tr>
 </table>
 
 <div>
@@ -33,5 +33,10 @@
            th:class="${i == currentPage} ? 'current-page' : ''">1</a>
     </span>
 </div>
+
+<p>
+    <a th:href="@{/users/add}">Thêm 10 người dùng</a>
+</p>
+
 </body>
 </html>

@@ -16,5 +16,10 @@
 
     <!-- declare entity -->
     <mapping class="com.data.java_ss19.entity.User" />
+    <mapping class="com.data.java_ss19.entity.Movie" />
+    <mapping class="com.data.java_ss19.entity.Theater" />
+    <mapping class="com.data.java_ss19.entity.Schedule" />
+    <mapping class="com.data.java_ss19.entity.ScreenRoom" />
+    <mapping class="com.data.java_ss19.entity.Seat" />
   </session-factory>
 </hibernate-configuration>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Thêm phòng chiếu</title></head>
+<body>
+<h2>Thêm phòng chiếu</h2>
+<form th:action="@{/screenrooms/add}" method="post" th:object="${screenRoom}">
+    <label>Tên phòng:</label>
+    <input type="text" th:field="*{roomName}" />
+    <div th:if="${#fields.hasErrors('roomName')}" th:errors="*{roomName}"></div>
+
+    <label>Sức chứa:</label>
+    <input type="number" th:field="*{capacity}" />
+    <div th:if="${#fields.hasErrors('capacity')}" th:errors="*{capacity}"></div>
+
+    <label>Chọn rạp:</label>
+    <select name="theaterId">
+        <option th:each="theater : ${theaters}" th:value="${theater.id}" th:text="${theater.theaterName}"></option>
+    </select>
+
+    <button type="submit">Lưu</button>
+</form>
+</body>
+</html>

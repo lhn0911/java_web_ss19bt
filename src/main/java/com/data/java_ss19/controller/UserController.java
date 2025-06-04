@@ -29,16 +29,6 @@ public class UserController {
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);
 
-//        for (int i = 1; i <= 10; i++) {
-//            User user = new User();
-//            user.setUsername("user" + i);
-//            user.setPassword("pass" + i);
-//            user.setEmail("user" + i + "@example.com");
-//            user.setPhoneNumber("090000000" + i);
-//            user.setActive(true);
-//            userService.saveUser(user);
-//        }
-
         return "listUser";
     }
 
@@ -48,5 +38,17 @@ public class UserController {
         return "redirect:/users";
     }
 
+    @GetMapping("/add")
+    public String add10User() {
+        for (int i = 1; i <= 10; i++) {
+            User user = new User();
+            user.setUsername("user" + i);
+            user.setPassword("pass" + i);
+            user.setEmail("user" + i + "@example.com");
+            user.setPhoneNumber("090000000" + i);
+            user.setActive(true);
+            userService.saveUser(user);
+        }
+        return "addUserResult";
+    }
 }
-
